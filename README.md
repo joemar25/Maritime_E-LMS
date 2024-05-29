@@ -2,6 +2,10 @@
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
+## Documentation Docs
+
+[File](https://docs.google.com/document/d/1ju7fCpJdQ_ecB2v3QRYxMG2OINmO1QswlJ7EAav-gtU/edit?usp=sharing)
+
 ## Creating a project
 
 If you're seeing this, you've probably already done this step. Congrats!
