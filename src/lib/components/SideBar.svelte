@@ -62,7 +62,7 @@
 			Search
 		</button>
 
-		<div class="flex flex-col flex-grow gap-5 overflow-y-scroll hide-scrollbar">
+		<div class="flex flex-col flex-grow gap-5 overflow-y-auto scrollbar-hide">
 			{#if $isLoading && isCoursesVisible}
 				<div class="w-full space-y-3">
 					<div
