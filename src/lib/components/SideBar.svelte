@@ -55,7 +55,7 @@
 
 		<button
 			on:click={() => ($isSearchVisible = !$isSearchVisible)}
-			class="flex w-full items-center gap-2 rounded-md border-[1.5px] dark:border-white/10 text-black/50 border-black/10 bg-transparent p-2 dark:text-white/50 outline-none transition hover:border-transparent hover:bg-white/10"
+			class="flex w-full items-center gap-2 rounded-md border-[1.5px] dark:border-white/10 text-black/50 border-black/10 bg-transparent p-2 dark:text-white/50 outline-none transition dark:hover:border-transparent dark:hover:bg-white/10 hover:border-black/20"
 		>
 			<Icon class="flex-shrink-0 text-base" icon="ph:magnifying-glass" />
 			<!-- {$t('search')} -->

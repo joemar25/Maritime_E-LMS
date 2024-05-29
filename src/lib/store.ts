@@ -22,6 +22,13 @@ interface Lesson {
 	content: string;
 }
 
+// Define the type for a progress record
+interface ProgressRecord {
+	id: string;
+	course: string;
+	status: 'Completed' | 'In Progress' | 'Not Started';
+}
+
 // loading placeholders
 export const isLoading = writable(false);
 export const isSidebarVisible = writable(true);
@@ -175,6 +182,25 @@ export const lessons = writable<Lesson[]>([
 	}
 ]);
 
+interface ProgressRecord {
+	id: string;
+	course: string;
+	status: 'Completed' | 'In Progress' | 'Not Started';
+}
+
+// Define the initial progress state for each course
+export const progress = writable<ProgressRecord[]>([
+	{ id: '1', course: '1', status: 'Not Started' },
+	{ id: '2', course: '2', status: 'Not Started' },
+	{ id: '3', course: '3', status: 'Not Started' },
+	{ id: '4', course: '4', status: 'Not Started' },
+	{ id: '5', course: '5', status: 'Not Started' },
+	{ id: '6', course: '6', status: 'Not Started' },
+	{ id: '7', course: '7', status: 'Not Started' },
+	{ id: '8', course: '8', status: 'Not Started' },
+	{ id: '9', course: '9', status: 'Not Started' },
+	{ id: '10', course: '10', status: 'Not Started' }
+]);
 // let timeout = null;
 // let timeoutEnabled = true;
 
