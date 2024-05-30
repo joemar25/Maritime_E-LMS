@@ -7,18 +7,13 @@ export const actions: Actions = {
 			email: string;
 			password: string;
 		};
-
-		const { data, error } = await supabase.auth.signInWithPassword({
-			email,
-			password,
-		});
-
-		console.log(data, error);
-
+		console.log(email, password);
+		const { error } = await supabase.auth.signInWithPassword({ email, password });
 		if (error) {
-			return redirect(302, '/login');
+			console.error(error);
+			return redirect(303, '/login');
+		} else {
+			return redirect(303, '/');
 		}
-
-		return redirect(303, '/');
 	},
 };

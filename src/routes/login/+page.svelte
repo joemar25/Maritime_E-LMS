@@ -60,12 +60,12 @@
 			<form class="flex flex-col gap-4" method="POST">
 				<input
 					bind:value="{username}"
+					type="email"
 					name="email"
 					class="{!isUsernameValid && isFormSubmitted
 						? 'rounded-md dark:bg-red-400/5 p-2 text-red-400 outline outline-[1.5px] outline-red-400/10 transition-all placeholder:text-red-400/50 focus:outline-red-400/20'
 						: 'rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20'}"
 					placeholder="username"
-					type="text"
 				/>
 				{#if !isUsernameValid && isFormSubmitted}
 					<h3 in:slide="{{ duration: 300, easing: quintOut }}" class="text-red-400 text-balance">

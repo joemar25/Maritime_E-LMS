@@ -63,7 +63,6 @@ const supabase: Handle = async ({ event, resolve }) => {
 	});
 };
 
-// Modify later read docs
 const authGuard: Handle = async ({ event, resolve }) => {
 	const { session, user } = await event.locals.safeGetSession();
 	event.locals.session = session;

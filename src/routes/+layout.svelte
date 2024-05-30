@@ -2,10 +2,14 @@
 	import LayoutHeader from '$lib/components/LayoutComponents/LayoutHeader.svelte';
 	import SideBar from '$lib/components/SideBar.svelte';
 	import { BrowserThemeStore } from '$lib/theme';
-	import '../../app.css';
+	import '../app.css';
 
 	import { goto, invalidate } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+
+	let pathName = $page.url.pathname;
+	$: pathName = $page.url.pathname;
 
 	export let data;
 	$: ({ session, supabase } = data);
@@ -28,16 +32,27 @@
 
 		return () => data.subscription.unsubscribe();
 	});
+
+	$: logout = async () => {
+		const { error } = await supabase.auth.signOut();
+		if (error) {
+			console.error(error);
+		}
+	};
 </script>
 
 <div
 	class="mx-auto h-screen max-w-[2560px] font-circular text-sm dark:text-white antialiased overflow-hidden {$BrowserThemeStore}"
 >
 	<main class="flex justify-between h-dvh lg:overflow-x-hidden dark:bg-dark dark:text-white">
-		<SideBar />
+		{#if pathName !== '/login'}
+			<SideBar on:click="{logout}" />
+		{/if}
 
 		<div class="flex flex-col flex-1 gap-5 p-5 overflow-y-scroll dark:bg-dark">
-			<LayoutHeader />
+			{#if pathName !== '/login'}
+				<LayoutHeader />
+			{/if}
 
 			<slot />
 		</div>

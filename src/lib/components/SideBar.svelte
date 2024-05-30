@@ -13,11 +13,11 @@
 
 {#if $isSidebarVisible}
 	<aside
-		transition:slide={{
+		transition:slide="{{
 			duration: 300,
 			easing: quintOut,
-			axis: 'x'
-		}}
+			axis: 'x',
+		}}"
 		class="flex h-full w-80 flex-none flex-col gap-5 border-r-[1.5px] dark:border-r-white/5 border-r-black/5 bg-black/5 dark:bg-white/5 p-5 lg:w-full lg:border-none"
 	>
 		<div class="flex items-center justify-between">
@@ -29,7 +29,7 @@
 				alt="Maritime_E-LMS"
 			/>
 			<button
-				on:click={() => ($isSidebarVisible = !isSidebarVisible)}
+				on:click="{() => ($isSidebarVisible = !isSidebarVisible)}"
 				class="items-center justify-center hidden p-2 transition bg-transparent rounded-full group hover:bg-white/10 lg:flex"
 			>
 				<Icon
@@ -54,7 +54,7 @@
 		{/if}
 
 		<button
-			on:click={() => ($isSearchVisible = !$isSearchVisible)}
+			on:click="{() => ($isSearchVisible = !$isSearchVisible)}"
 			class="flex w-full items-center gap-2 rounded-md border-[1.5px] dark:border-white/10 text-black/50 border-black/10 bg-transparent p-2 dark:text-white/50 outline-none transition dark:hover:border-transparent dark:hover:bg-white/10 hover:border-black/20"
 		>
 			<Icon class="flex-shrink-0 text-base" icon="ph:magnifying-glass" />
@@ -129,7 +129,7 @@
 						{#each $resources as resource}
 							<a
 								class="w-full p-2 truncate transition bg-transparent rounded-md line-clamp-1 text-start dark:text-white/50 hover:bg-black/10 dark:hover:bg-white/10 dark:hover:text-white"
-								href={resource.link}
+								href="{resource.link}"
 								target="_blank">{resource.name}</a
 							>
 						{/each}
@@ -169,7 +169,9 @@
 				</div>
 
 				<button
+					on:click
 					class="flex items-center justify-center rounded-md bg-transparent p-2 text-red-400 outline outline-[1.5px] outline-red-400/20 transition hover:bg-red-400/20"
+					type="submit"
 				>
 					<Icon class="flex-shrink-0 text-base" icon="ph:sign-out" />
 
