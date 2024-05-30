@@ -167,16 +167,19 @@
 						</h4>
 					</div>
 				</div>
+				<!-- Logout Button -->
+				<form method="POST">
+					<button
+						on:click
+						class="flex items-center justify-center rounded-md bg-transparent p-2 text-red-400 outline outline-[1.5px] outline-red-400/20 transition hover:bg-red-400/20"
+						type="submit"
+					>
+						<Icon class="flex-shrink-0 text-base" icon="ph:sign-out" />
 
-				<button
-					on:click
-					class="flex items-center justify-center rounded-md bg-transparent p-2 text-red-400 outline outline-[1.5px] outline-red-400/20 transition hover:bg-red-400/20"
-					type="submit"
-				>
-					<Icon class="flex-shrink-0 text-base" icon="ph:sign-out" />
-
-					<!-- 	on:click={logout} -->
-				</button>
+						<!-- 	on:click={logout} -->
+					</button>
+				</form>
+				<!-- Logout Button -->
 			</div>
 		{/if}
 	</aside>

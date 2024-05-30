@@ -32,13 +32,6 @@
 
 		return () => data.subscription.unsubscribe();
 	});
-
-	$: logout = async () => {
-		const { error } = await supabase.auth.signOut();
-		if (error) {
-			console.error(error);
-		}
-	};
 </script>
 
 <div
@@ -46,7 +39,7 @@
 >
 	<main class="flex justify-between h-dvh lg:overflow-x-hidden dark:bg-dark dark:text-white">
 		{#if pathName !== '/login'}
-			<SideBar on:click="{logout}" />
+			<SideBar />
 		{/if}
 
 		<div class="flex flex-col flex-1 gap-5 p-5 overflow-y-scroll dark:bg-dark">
