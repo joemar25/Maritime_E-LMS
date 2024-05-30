@@ -10,3 +10,9 @@
 		<Icon class="flex-shrink-0 text-6xl text-white/10" icon="svg-spinners:bars-scale-fade" />
 	</div>
 {/if}
+
+<form method="POST">
+	<input type="email" name="email" id="" />
+	<input type="password" name="password" />
+	<button type="submit">Submit</button>
+</form>
