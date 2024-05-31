@@ -42,29 +42,29 @@
 {#if $isSearchVisible}
 	<div
 		aria-hidden="true"
-		on:click={() => ($isSearchVisible = false)}
-		on:keydown={handleKeydown}
+		on:click="{() => ($isSearchVisible = false)}"
+		on:keydown="{handleKeydown}"
 		class="fixed inset-0 z-20 flex items-center justify-center p-5 bg-black/50 backdrop-blur-sm"
 	>
 		<div
 			aria-hidden="true"
 			on:click|stopPropagation
-			transition:scale={{ duration: 250, opacity: 0.001, start: 0.98 }}
-			class={filteredLessons.length > 5
+			transition:scale="{{ duration: 250, opacity: 0.001, start: 0.98 }}"
+			class="{filteredLessons.length > 5
 				? 'hide-scrollbar relative m-auto h-[461px] w-[700px] overflow-y-scroll rounded-md bg-dark outline outline-[1.5px] outline-white/10'
-				: 'hide-scrollbar relative m-auto w-[700px] overflow-y-scroll rounded-md bg-dark outline outline-[1.5px] outline-white/10'}
+				: 'hide-scrollbar relative m-auto w-[700px] overflow-y-scroll rounded-md bg-dark outline outline-[1.5px] outline-white/10'}"
 		>
 			<div
 				class="sticky inset-x-0 top-0 flex w-full items-center justify-between gap-2 border-b-[1.5px] border-b-white/10 bg-dark px-4"
 			>
 				<Icon class="flex-shrink-0 text-xl text-white/50" icon="ph:magnifying-glass" />
 				<input
-					bind:value={searchTerm}
+					bind:value="{searchTerm}"
 					class="flex-1 py-4 bg-transparent placeholder:text-white/50 focus:outline-none"
 					type="text"
 					placeholder="Find Lesson"
 				/>
-				<button on:click={() => ($isSearchVisible = false)}>
+				<button on:click="{() => ($isSearchVisible = false)}">
 					<Icon
 						class="flex-shrink-0 text-xl transition rotate-45 text-white/50 hover:text-white"
 						icon="ph:plus"
@@ -85,10 +85,10 @@
 					{#each filteredLessons as lesson (lesson.id)}
 						{#if course.id === lesson.courseId}
 							<button
-								on:click={() => {
+								on:click="{() => {
 									// navigate(`/${slugify(lesson.title, { lower: true, strict: true })}`);
 									isSearchVisible.set(false);
-								}}
+								}}"
 								class="flex items-center justify-between w-full gap-5 p-3 transition bg-transparent rounded-md hover:bg-white/5"
 							>
 								<div class="space-y-1">
