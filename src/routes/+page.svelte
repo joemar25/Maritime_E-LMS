@@ -48,7 +48,7 @@
 		$progress = $progress.map((progressRecord) =>
 			progressRecord.course === courseId
 				? { ...progressRecord, status: 'Not Started' }
-				: progressRecord
+				: progressRecord,
 		);
 		loading[courseId] = false;
 	};
@@ -94,28 +94,28 @@
 {:else}
 	{#each $courses as course (course.id)}
 		<div
-			id={course.id}
-			class={isOpen[course.id]
+			id="{course.id}"
+			class="{isOpen[course.id]
 				? 'w-full rounded-md outline outline-[1.5px] dark:outline-white/20 outline-black/20 transition-all dark:hover:outline-white/20'
-				: 'w-full rounded-md outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:hover:outline-white/20'}
+				: 'w-full rounded-md outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:hover:outline-white/20'}"
 		>
 			<div
 				aria-hidden="true"
-				on:click={() => toggleCourse(course.id)}
-				class={isOpen[course.id]
+				on:click="{() => toggleCourse(course.id)}"
+				class="{isOpen[course.id]
 					? 'w-full cursor-pointer space-y-5 rounded-b-none rounded-t-md bg-white/5 dark:bg-white/5 p-5'
-					: 'w-full cursor-pointer space-y-5 rounded-md bg-white/5 dark:bg-white/5 p-5'}
+					: 'w-full cursor-pointer space-y-5 rounded-md bg-white/5 dark:bg-white/5 p-5'}"
 			>
 				{#each $progress as progressRecord (progressRecord.id)}
 					{#if course.id === progressRecord.course}
 						<div class="flex items-center justify-between w-full gap-5 sm:flex-col">
 							<div class="flex items-center gap-3 xs:flex-col xs:items-start sm:w-full">
 								<h3
-									class={progressRecord.status === 'Completed'
+									class="{progressRecord.status === 'Completed'
 										? 'rounded-full bg-emerald-400/10 px-3 py-1 text-emerald-400/70'
 										: progressRecord.status === 'In Progress'
 											? 'rounded-full  bg-amber-400/10 px-3 py-1 text-amber-400 darK:text-amber-400/70'
-											: 'rounded-full bg-black/10 dark:bg-white/10 px-3 py-1 dark:text-white/70'}
+											: 'rounded-full bg-black/10 dark:bg-white/10 px-3 py-1 dark:text-white/70'}"
 								>
 									{progressRecord.status === 'Completed'
 										? 'Completed'
@@ -135,10 +135,10 @@
 								{#if progressRecord.status === 'Completed' || progressRecord.status === 'In Progress'}
 									<button
 										on:click|stopPropagation
-										on:click={() => resetProgress(course.id)}
-										class={loading[course.id]
+										on:click="{() => resetProgress(course.id)}"
+										class="{loading[course.id]
 											? 'pointer-events-none line-clamp-1 flex items-center justify-center gap-2 truncate rounded-md px-4 py-2 text-red-400 opacity-50 outline outline-[1.5px] outline-red-400/20 transition hover:bg-red-400/20 sm:w-full sm:flex-1 sm:px-0'
-											: 'line-clamp-1 flex items-center justify-center gap-2 truncate rounded-md px-4 py-2 text-red-400 outline outline-[1.5px] outline-red-400/20 transition hover:bg-red-400/20 sm:w-full sm:flex-1 sm:px-0'}
+											: 'line-clamp-1 flex items-center justify-center gap-2 truncate rounded-md px-4 py-2 text-red-400 outline outline-[1.5px] outline-red-400/20 transition hover:bg-red-400/20 sm:w-full sm:flex-1 sm:px-0'}"
 									>
 										{loading[course.id] ? 'Resetting Progress' : 'Reset Progress'}
 										{#if loading[course.id]}
@@ -151,7 +151,7 @@
 								{/if}
 								<button
 									on:click|stopPropagation
-									on:click={() => gotoCourse('/course')}
+									on:click="{() => gotoCourse('/lesson')}"
 									class="line-clamp-1 truncate rounded-md dark:bg-white/10 px-4 py-2 outline outline-[1.5px] dark:outline-white/20 outline-black/25 transition dark:hover:bg-white/20 sm:w-full sm:flex-1 sm:px-0"
 								>
 									{progressRecord.status === 'Completed'
@@ -184,7 +184,7 @@
 								</h3>
 							</div>
 							<button
-								on:click={() => console.log(`Navigate to lesson: ${lesson.title}`)}
+								on:click="{() => console.log(`Navigate to lesson: ${lesson.title}`)}"
 								class="flex items-center gap-2 p-2 transition dark:text-white/50 dark:hover:text-white"
 							>
 								<Icon class="flex-shrink-0 text-lg" icon="ph:eye" />

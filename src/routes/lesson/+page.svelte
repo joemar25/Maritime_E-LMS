@@ -1,7 +1,14 @@
-<script>
+<script lang="ts">
 	import { isLoading } from '$lib/store';
 	import Icon from '@iconify/svelte';
+	// import type { PageData } from './$types';
+
+	// export let data: PageData;
+	// $: ({ lessons, supabase, user } = data);
 </script>
+
+<!-- <p>{JSON.stringify(user)}</p> -->
+<!-- <p>{lessons}</p> -->
 
 {#if $isLoading}
 	<div
@@ -11,8 +18,4 @@
 	</div>
 {/if}
 
-<form method="POST">
-	<input type="email" name="email" id="" />
-	<input type="password" name="password" />
-	<button type="submit">Submit</button>
-</form>
+<!-- Add the lessons here -->

@@ -8,7 +8,7 @@
 	$: routeName = $page.url.pathname;
 </script>
 
-{#if !$isLoading && routeName === '/course'}
+{#if !$isLoading && routeName === '/lesson'}
 	<a href="/" class="flex items-center gap-2 transition text-white/50 hover:text-white">
 		<Icon class="flex-shrink-0" icon="ph:arrow-left" />
 		My Courses
@@ -18,7 +18,7 @@
 	<!-- LEFT SIDE -->
 	<div class="flex items-center gap-3">
 		<button
-			on:click={() => ($isSidebarVisible = !$isSidebarVisible)}
+			on:click="{() => ($isSidebarVisible = !$isSidebarVisible)}"
 			class="flex items-center justify-center p-2 text-xl transition bg-transparent rounded-full group hover:bg-white/10"
 		>
 			<Icon
@@ -27,7 +27,7 @@
 			/>
 		</button>
 
-		{#if routeName === '/course'}
+		{#if routeName === '/lesson'}
 			{#if $isLoading}
 				<div class="p-1 rounded-full w-96 animate-pulse bg-white/10"></div>
 			{:else}
@@ -47,7 +47,7 @@
 	<!-- LEFT SIDE -->
 
 	<!-- RIGHT SIDE -->
-	{#if routeName === '/course'}
+	{#if routeName === '/lesson'}
 		{#if !$isLoading}
 			<LayoutHeaderButtons />
 			<!-- GO TO THE NEXT LESSON -->
