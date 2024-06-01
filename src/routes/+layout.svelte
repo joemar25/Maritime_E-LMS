@@ -42,12 +42,12 @@
 	class="mx-auto h-screen max-w-[2560px] font-circular text-sm dark:text-white antialiased overflow-hidden {$BrowserThemeStore}"
 >
 	<main class="flex justify-between h-dvh lg:overflow-x-hidden dark:bg-dark dark:text-white">
-		{#if pathName !== '/login'}
+		{#if pathName !== '/login' && pathName !== '/signup'}
 			<SideBar on:click="{logout}" />
 		{/if}
 
 		<div class="flex flex-col flex-1 gap-5 p-5 overflow-y-scroll dark:bg-dark">
-			{#if pathName !== '/login'}
+			{#if pathName !== '/login' && pathName !== '/signup'}
 				<LayoutHeader />
 			{/if}
 

@@ -46,9 +46,7 @@
 		>
 			<div class="w-full space-y-1">
 				<h2 class="text-xl text-balance">Welcome to Maritime_E-LMS</h2>
-				<h3 class="text-base text-black text-balance dark:text-white/50">
-					Please login to your account.
-				</h3>
+				<h3 class="text-base text-black text-balance dark:text-white/50">Create your account.</h3>
 			</div>
 
 			{#if loginError}
@@ -59,13 +57,12 @@
 
 			<form class="flex flex-col gap-4" method="POST">
 				<input
-					bind:value="{username}"
 					type="email"
 					name="email"
 					class="{!isUsernameValid && isFormSubmitted
 						? 'rounded-md dark:bg-red-400/5 p-2 text-red-400 outline outline-[1.5px] outline-red-400/10 transition-all placeholder:text-red-400/50 focus:outline-red-400/20'
 						: 'rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20'}"
-					placeholder="username"
+					placeholder="email"
 				/>
 				{#if !isUsernameValid && isFormSubmitted}
 					<h3 in:slide="{{ duration: 300, easing: quintOut }}" class="text-red-400 text-balance">
@@ -87,6 +84,48 @@
 						Password must be 8+ characters
 					</h3>
 				{/if}
+
+				<input
+					name="name"
+					class="rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20"
+					placeholder="Full Name"
+				/>
+
+				<input
+					name="bio"
+					class="rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20"
+					placeholder="Bio"
+				/>
+
+				<input
+					name="contact_number"
+					class="rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20"
+					placeholder="Contact Number"
+				/>
+
+				<input
+					name="address"
+					class="rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20"
+					placeholder="Address"
+				/>
+
+				<input
+					name="date_of_birth"
+					type="date"
+					class="rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20"
+					placeholder="Date of Birth"
+				/>
+
+				<select
+					name="gender"
+					class="rounded-md dark:bg-white/5 bg-black/5 p-2 outline outline-[1.5px] dark:outline-white/10 outline-black/10 transition-all dark:placeholder:text-white/50 placeholder:text-black/50 dark:focus:outline-white/20 focus:outline-black/20"
+				>
+					<option value="" disabled selected>Select Gender</option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="other">Other</option>
+				</select>
+
 				<button
 					on:click="{() => (isLoading = true)}"
 					type="submit"
@@ -95,18 +134,18 @@
 						: 'bg-main text-white hover:bg-main/80 flex items-center justify-center gap-2 rounded-md p-2 transition'}"
 				>
 					{#if isLoading}
-						Logging in
+						Creating account
 						<Icon
 							class="flex-shrink-0 text-base animate-spin"
 							icon="fluent:spinner-ios-16-regular"
 						/>
 					{:else}
-						Login
+						Create account
 						<Icon class="flex-shrink-0 text-base" icon="ph:arrow-right" />
 					{/if}
 				</button>
 			</form>
-			<button on:click="{() => goto('/signup')}" class="mx-auto w-fit dark:text-white/50">
+			<button on:click="{() => goto('/login')}" class="mx-auto w-fit dark:text-white/50">
 				Don't have an?
 				<span class="text-black underline transition dark:text-white dark:hover:text-white/80"
 					>My Courses</span

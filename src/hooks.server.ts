@@ -49,14 +49,23 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	event.locals.session = session;
 	// event.locals.user = user;
 
-	if (!session && event.url.pathname !== '/login') {
+	if (!session && event.url.pathname === '/') {
+		// Store the originally requested path in a cookie
+		event.cookies.set('redirectAfterLogin', event.url.pathname, { path: '/' });
 		throw redirect(303, '/login');
 	}
 
-	if (session && event.url.pathname === '/login') {
-		throw redirect(303, '/');
+	// Allow access to /signup and /login without redirection
+	if (event.url.pathname === '/signup' || event.url.pathname === '/login') {
+		return resolve(event);
 	}
 
+	// Redirect authenticated users away from /login to the originally requested path or home if none
+	if (session && event.url.pathname === '/login') {
+		const redirectPath = event.cookies.get('redirectAfterLogin') || '/';
+		event.cookies.delete('redirectAfterLogin', { path: '/' });
+		throw redirect(303, redirectPath);
+	}
 	return resolve(event);
 };
 

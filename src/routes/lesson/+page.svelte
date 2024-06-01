@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { isLoading } from '$lib/store';
 	import Icon from '@iconify/svelte';
-	// import type { PageData } from './$types';
+	import type { PageData } from './$types';
 
 	// export let data: PageData;
-	// $: ({ lessons, supabase, user } = data);
+	// $: ({ users, supabase, user } = data);
 </script>
 
 <!-- <p>{JSON.stringify(user)}</p> -->
