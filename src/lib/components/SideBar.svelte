@@ -1,12 +1,13 @@
 <script>
 	import Icon from '@iconify/svelte';
-
 	import { quintOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 	// import { t } from '../lib/i18n';
 
 	import { courses, isLoading, isSearchVisible, isSidebarVisible, resources } from '$lib/store';
 	import ThemeSelector from './ThemeSelector.svelte';
+
+	import { page } from '$app/stores';
 
 	export let isCoursesVisible = true;
 </script>
@@ -161,9 +162,12 @@
 						<span class="self-center font-semibold">S</span>
 					</div>
 					<div>
-						<h3 class="break-all truncate line-clamp-1 text-wrap dark:text-white/50">Tatadmin</h3>
+						<h3 class="break-all truncate line-clamp-1 text-wrap dark:text-white/50">
+							{$page.data.user.email}
+						</h3>
 						<h4 class="break-all truncate line-clamp-1 text-wrap dark:text-white/50">
-							tatadmin@email.com
+							{$page.data.user.email}
+
 						</h4>
 					</div>
 				</div>
